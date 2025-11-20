@@ -11,8 +11,8 @@ admin:
 
 clamav:
   image:
-    repository: mailu/clamav
-    tag: 1.8
+    repository: mailu/clamav-debian
+    tag: 1.4
 
 dovecot:
   image:

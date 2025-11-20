@@ -65,8 +65,7 @@ spec:
         {{- if .Values.clamav.startupProbe}}
         startupProbe:
           exec:
-            command:
-              - /health.sh
+            command: ["echo", "PING", "|", "nc", "localhost", "3310", "|", "grep", "PONG"]
           periodSeconds:  {{ default 10 .Values.clamav.startupProbe.periodSeconds }} 
           failureThreshold: {{ default 60 .Values.clamav.startupProbe.failureThreshold }} 
           timeoutSeconds: {{ default 5 .Values.clamav.startupProbe.timeoutSeconds }} 
@@ -74,8 +73,7 @@ spec:
         {{ if .Values.clamav.livenessProbe -}}
         livenessProbe:
           exec:
-            command:
-              - /health.sh
+            command: ["echo", "PING", "|", "nc", "localhost", "3310", "|", "grep", "PONG"]
           periodSeconds:  {{ default 10 .Values.clamav.livenessProbe.periodSeconds }} 
           failureThreshold: {{ default 3 .Values.clamav.livenessProbe.failureThreshold }} 
           timeoutSeconds: {{ default 5 .Values.clamav.livenessProbe.timeoutSeconds }} 
@@ -83,8 +81,7 @@ spec:
         {{ if .Values.clamav.readinessProbe -}}
         readinessProbe:
           exec:
-            command:
-              - /health.sh
+            command: ["echo", "PING", "|", "nc", "localhost", "3310", "|", "grep", "PONG"]
           periodSeconds:  {{ default 10 .Values.clamav.readinessProbe.periodSeconds }} 
           failureThreshold: {{ default 1 .Values.clamav.readinessProbe.failureThreshold }} 
           timeoutSeconds: {{ default 5 .Values.clamav.readinessProbe.timeoutSeconds }} 
